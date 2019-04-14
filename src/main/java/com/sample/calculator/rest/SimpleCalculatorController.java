@@ -2,6 +2,7 @@ package com.sample.calculator.rest;
 
 import com.sample.calculator.service.Calculator;
 import com.sample.calculator.service.SimpleCalculatorService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,7 @@ public class SimpleCalculatorController {
 
 
     @GetMapping("/add/{num1}/{num2}")
+    @ApiOperation(value = "Returns the sum of the arguments")
     public ResponseEntity<CalculationResponse> add(@PathVariable("num1") double first,
                                                    @PathVariable("num2") double second) {
 
@@ -32,6 +34,7 @@ public class SimpleCalculatorController {
 
 
     @GetMapping("/sub/{num1}/{num2}")
+    @ApiOperation(value = "Returns the difference of the arguments")
     public ResponseEntity<CalculationResponse> sub(@PathVariable("num1") double first,
                                                    @PathVariable("num2") double second) {
 
@@ -44,6 +47,7 @@ public class SimpleCalculatorController {
 
 
     @GetMapping("/div/{num1}/{num2}")
+    @ApiOperation(value = "Returns the quotient of the arguments")
     public ResponseEntity<CalculationResponse> div(@PathVariable("num1") double first,
                                                    @PathVariable("num2") double second) {
 
@@ -56,6 +60,7 @@ public class SimpleCalculatorController {
 
 
     @GetMapping("/multiply/{num1}/{num2}")
+    @ApiOperation(value = "Returns the product of the arguments")
     public ResponseEntity<CalculationResponse> multiply(@PathVariable("num1") double first,
                                                         @PathVariable("num2") double second) {
 
