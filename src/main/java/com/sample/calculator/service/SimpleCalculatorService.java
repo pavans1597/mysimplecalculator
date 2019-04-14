@@ -3,7 +3,7 @@ package com.sample.calculator.service;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SimplerCalculatorService implements Calculator {
+public class SimpleCalculatorService implements Calculator {
 
     @Override
     public double addition(double first, double second) {

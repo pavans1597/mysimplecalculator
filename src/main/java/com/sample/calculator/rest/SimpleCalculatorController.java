@@ -1,10 +1,9 @@
 package com.sample.calculator.rest;
 
 import com.sample.calculator.service.Calculator;
-import com.sample.calculator.service.SimplerCalculatorService;
+import com.sample.calculator.service.SimpleCalculatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,10 +14,9 @@ public class SimpleCalculatorController {
     private Calculator calculator;
 
     @Autowired
-    public SimpleCalculatorController(SimplerCalculatorService calculator) {
+    public SimpleCalculatorController(SimpleCalculatorService calculator) {
         this.calculator = calculator;
     }
-
 
 
     @GetMapping("/add/{num1}/{num2}")
@@ -27,11 +25,7 @@ public class SimpleCalculatorController {
 
         final double result = calculator.addition(first, second);
 
-        CalculationResponse calculation = CalculationResponse.builder()
-                .first(first)
-                .second(second)
-                .result(result)
-                .build();
+        CalculationResponse calculation = build(first, second, result);
 
         return ResponseEntity.ok(calculation);
     }
@@ -41,13 +35,9 @@ public class SimpleCalculatorController {
     public ResponseEntity<CalculationResponse> sub(@PathVariable("num1") double first,
                                                    @PathVariable("num2") double second) {
 
-        final double result  = calculator.subtraction(first, second);
+        final double result = calculator.subtraction(first, second);
 
-        CalculationResponse calculation = CalculationResponse.builder()
-                .first(first)
-                .second(second)
-                .result(result)
-                .build();
+        CalculationResponse calculation = build(first, second, result);
 
         return ResponseEntity.ok(calculation);
     }
@@ -57,13 +47,9 @@ public class SimpleCalculatorController {
     public ResponseEntity<CalculationResponse> div(@PathVariable("num1") double first,
                                                    @PathVariable("num2") double second) {
 
-        final double result  = calculator.division(first, second);
+        final double result = calculator.division(first, second);
 
-        CalculationResponse calculation = CalculationResponse.builder()
-                .first(first)
-                .second(second)
-                .result(result)
-                .build();
+        CalculationResponse calculation = build(first, second, result);
 
         return ResponseEntity.ok(calculation);
     }
@@ -75,13 +61,17 @@ public class SimpleCalculatorController {
 
         final double result = calculator.multiplication(first, second);
 
-        CalculationResponse calculation = CalculationResponse.builder()
+        CalculationResponse calculation = build(first, second, result);
+
+        return ResponseEntity.ok(calculation);
+    }
+
+    public CalculationResponse build(double first, double second, double result) {
+        return CalculationResponse.builder()
                 .first(first)
                 .second(second)
                 .result(result)
                 .build();
-
-        return ResponseEntity.ok(calculation);
     }
 }
 
