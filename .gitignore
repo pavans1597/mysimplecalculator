@@ -1,31 +1,47 @@
-HELP.md
-.gradle
-/build/
-!gradle/wrapper/gradle-wrapper.jar
-target
-/target
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+# Created by https://www.gitignore.io/api/java,linux,maven,java-springboot
 
-### IntelliJ IDEA ###
-.idea
-*.iws
+### Java ###
+*.class
+*.war
+*.ear
+*.jar
+*.nar
+hs_err_pid*
+
+### Maven ###
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+pom.xml.branch
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+### Spring Boot ###
+log/
+target/
+!src/main/
+!src/main/resources/
+!src/main/resources/application.properties
+
+### IDE ###
+.idea/
 *.iml
+*.iws
 *.ipr
-/out/
+*.iws
+*.swp
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+### OS ###
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
 
-### VS Code ###
-.vscode/
+### Logs ###
+*.log
+*.log.*
